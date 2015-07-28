@@ -5,5 +5,8 @@ module.exports = {
 	},
 	drop: function() {
 		console.log("you lose");
+	},
+	restart: function() {
+		//for starting and restarting
 	}
 };

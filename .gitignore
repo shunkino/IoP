@@ -1,2 +1,3 @@
 IoP_Client/INFO.h
-Resify/node_modules/
+./Restify/node_modules
+*.log

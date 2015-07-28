@@ -17,40 +17,49 @@ function index(req, res, next) {
 
 server.get('/', index);
 //routing
-server.get({ path: '/api/card/:player/:hands', version: '1.0.0' }, function(req, res, next) {
+server.get({ path: '/API/Card/:player/:hands', version: '1.0.0' }, function(req, res, next) {
 	//version 1.0.0
-	if (req.params.player == "p1") {
+	var cardPlayer = req.params.player;
+	if (cardPlayer == "P1") {
+		console.log(req.params.hands);	
 		//player1
 		//console.log(req.params.hands);
-		card.show(req.params.player);
+		card.show(cardPlayer);
 		//call card function from here. use :hands for detecting which card to render.
-	} else if (req.params.player == "p2"){
+	} else if (cardPlayer == "P2"){
 		//player2
-		tray.drop();
 	}
 });
 
-server.get({ path: '/api/tray/:player', version: '1.0.0' }, function(req, res, next) {
+server.get({ path: '/API/Tray/:action/:player', version: '1.0.0' }, function(req, res, next) {
 	//call tray funtion and give other paramators as well.	
+	console.log(req.params.player);
+	res.send({"1":1});
 });
 
-server.get({ path: '/api/game/:action', version: '1.0.0' }, function(req, res, next) {
+server.get({ path: '/API/Game/:action', version: '1.0.0' }, function(req, res, next) {
 	//call game manager.
+	var gameAction = req.params.action;
+	if (gameAction == "start") {
+		game.initialize();
+	}
 });
 
 //preporcessing for versioning
 server.pre(function (req, res, next) {
 	var pieces = req.url.replace(/^\/+/, '').split('/');
-	//console.log(pieces);
-	var version = pieces[1];
-	//precise version number for passing to req.headers
-	var preciseVersion;
-	//change way to show version 
-	if(!semver.valid(version)) {
-		preciseVersion = version.replace(/v(\d{1})\.(\d{1})/, '$1.$2.0');	
-	} if(semver.valid(preciseVersion) && server.versions.indexOf(preciseVersion) > -1) { req.url = req.url.replace(version + '/', ''); console.log(version);	
-	console.log(req.url);
-	req.headers['accept-version'] = preciseVersion;
+	if(req.url.match(/v(\d{1})\.(\d{1})/)) {
+		//do nothing when version is invalid.
+		var version = pieces[1];
+		//precise version number for passing to req.headers
+		var preciseVersion;
+		//change way to show version 
+		if(!semver.valid(version)) {
+			preciseVersion = version.replace(/v(\d{1})\.(\d{1})/, '$1.$2.0');	
+		} if(semver.valid(preciseVersion) && server.versions.indexOf(preciseVersion) > -1) { req.url = req.url.replace(version + '/', ''); console.log(version);	
+		console.log(req.url);
+		req.headers['accept-version'] = preciseVersion;
+		}
 	}
 	return next();
 });

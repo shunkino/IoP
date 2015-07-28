@@ -1,0 +1,17 @@
+{
+  "name": "IoP",
+  "version": "1.0.0",
+  "description": "Playing poker over the internet.With real card.",
+  "main": "TexasHoldem.js",
+  "dependencies": {
+    "restify": "^3.0.3",
+    "semver": "^5.0.1",
+    "node-of-cards": "^1.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "shunkin",
+  "license": "ISC"
+}
