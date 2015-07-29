@@ -17,26 +17,20 @@ function index(req, res, next) {
 
 server.get('/', index);
 //routing
+//version 1.0.0
 server.get({ path: '/API/Card/:player/:hands', version: '1.0.0' }, function(req, res, next) {
-	//version 1.0.0
 	var cardPlayer = req.params.player;
-	if (cardPlayer == "P1") {
-		console.log(req.params.hands);	
-		//player1
-		//console.log(req.params.hands);
 		card.show(cardPlayer);
-		//call card function from here. use :hands for detecting which card to render.
-	} else if (cardPlayer == "P2"){
-		//player2
-	}
 });
 
 server.get({ path: '/API/Tray/:action/:player', version: '1.0.0' }, function(req, res, next) {
 	//call tray funtion and give other paramators as well.	
 	console.log(req.params.player);
-	res.send({"1":1});
 });
 
+server.get({ path: '/API/Tray/:action', version: '1.0.0' }, function(req, res, next) {
+	//restart or other action from tray
+});
 server.get({ path: '/API/Game/:action', version: '1.0.0' }, function(req, res, next) {
 	//call game manager.
 	var gameAction = req.params.action;
@@ -68,6 +62,6 @@ server.pre(function (req, res, next) {
 //});
 
 //サーバーがどこで待つかの記述
-server.listen((8080), function() {
+server.listen((3000), function() {
 	console.log('%s listening at %s', server.name, server.url);
 });

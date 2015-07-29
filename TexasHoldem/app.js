@@ -26,16 +26,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 
-app.get('/API/v1.0/Tray/P1/1', function(req, res, next){
+app.get('/API/v1.0/Card/P1/1', function(req, res, next){
 	res.render('card', { Suits:'1', Num:'4' });
 });
-app.get('/API/v1.0/Tray/P1/2', function(req, res, next){
+app.get('/API/v1.0/Card/P1/2', function(req, res, next){
 	res.render('card', { Suits:'2', Num:'3' });
 });
-app.get('/API/v1.0/Tray/P2/1', function(req, res, next){
+app.get('/API/v1.0/Card/P2/1', function(req, res, next){
 	res.render('card', { Suits:'3', Num:'6' });
 });
-app.get('/API/v1.0/Tray/P2/2', function(req, res, next){
+app.get('/API/v1.0/Card/P2/2', function(req, res, next){
 	res.render('card', { Suits:'1', Num:'19' });
 });
 // catch 404 and forward to error handler

@@ -4,9 +4,38 @@ var p2 = [];
 module.exports = {
 	show: function(playerName) {
 		//show card
+		console.log("your name is " + playerName);
 		if (p1.length > 0 && p2.length > 0) {
-			//if card really exist.
-			console.log("your name is " + playerName);
+			//check if all card really exist.
+			console.log(p1);
+		} else {
+			console.log("player don't have enough cards");
+		}
+	},
+	add: function(card, player) {
+		console.log(p1.length);
+		if (player = "P1" && p1.length < 2) {
+			p1.push(card);	
+		}  if (player = "P2" && p2.length < 2) {
+			p2.push(card);
+		}
+		console.log(p1[0].cards);
+		console.log(p2[0].cards);
+	},
+	isFull: function(player) {
+		console.log(p1);
+		if (player = "P1") {
+		   if(p1.length < 2) {
+			return false;	
+		   } else {
+		   	return true;
+		   }
+		} else if (player = "P2") {
+		   if(p2.length < 2) {
+			return false;	
+		   } else {
+		   	return true;
+		   }
 		}
 	}
 };

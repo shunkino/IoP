@@ -6,7 +6,8 @@
   "dependencies": {
     "restify": "^3.0.3",
     "semver": "^5.0.1",
-    "node-of-cards": "^1.0.0"
+    "node-of-cards": "^1.0.0",
+	"cards": "^0.1.1"
   },
   "devDependencies": {},
   "scripts": {
