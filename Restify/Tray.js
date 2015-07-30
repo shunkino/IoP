@@ -1,7 +1,7 @@
 
 module.exports = {
 	bet: function() {
-		//betting function
+	//betting function
 	},
 	drop: function() {
 		console.log("you lose");

@@ -13,24 +13,22 @@ module.exports = {
 		}
 	},
 	add: function(card, player) {
-		console.log(p1.length);
-		if (player = "P1" && p1.length < 2) {
+		if (player == "P1" && p1.length < 2) {
 			p1.push(card);	
-		}  if (player = "P2" && p2.length < 2) {
+		}  
+		if (player == "P2" && p2.length < 2) {
 			p2.push(card);
 		}
-		console.log(p1[0].cards);
-		console.log(p2[0].cards);
 	},
 	isFull: function(player) {
-		console.log(p1);
+		console.log("isFull message " + p2.length);
 		if (player = "P1") {
 		   if(p1.length < 2) {
 			return false;	
 		   } else {
 		   	return true;
 		   }
-		} else if (player = "P2") {
+		} if (player = "P2") {
 		   if(p2.length < 2) {
 			return false;	
 		   } else {
