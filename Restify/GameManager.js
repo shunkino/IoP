@@ -1,4 +1,3 @@
-var nodeOfCards = require('node-of-cards');
 var nodeCard = require('cards');
 var card = require('./Card');
 var deck = [];
@@ -9,20 +8,13 @@ var newCard;
 
 var deckShuffle = function(callback) {
 	cardDeck = new nodeCard.PokerDeck();
-	//console.log(cardDeck);
 	cardDeck.shuffleAll();
 	callback();
-	//nodeOfCards.shuffle(function (err, data) {
-	//	callback();
-	//}); 
 }
 var deckDraw = function(target) {
 	newCard = cardDeck.draw();
 	cardVal = {"suits": newCard.suit, "numbers": newCard.value};
 	addHand(cardVal, target);
-	//nodeOfCards.draw(function (err, drawData) {
-	//	addHand(drawData, target);
-	//});
 }
 var addHand = function(handCard, target) {
 	//this function will be called to add card to hands.

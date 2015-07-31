@@ -4,10 +4,11 @@
   "description": "Playing poker over the internet.With real card.",
   "main": "TexasHoldem.js",
   "dependencies": {
-    "restify": "^3.0.3",
-    "semver": "^5.0.1",
+    "cards": "^0.1.1",
     "node-of-cards": "^1.0.0",
-	"cards": "^0.1.1"
+    "poker-evaluator": "^0.3.1",
+    "restify": "^3.0.3",
+    "semver": "^5.0.1"
   },
   "devDependencies": {},
   "scripts": {
