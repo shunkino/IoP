@@ -12,6 +12,12 @@ var tray = require('./Tray');
 var card = require('./Card');
 var gameUtil = require('./Util');
 
+server.use(function(req, res, next) {
+	res.header("Access-Control-Allow-Origin", "*");
+	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+	next();
+});
+
 function index(req, res, next) {
 	res.send({message: 'this is index'});
 }
@@ -39,8 +45,8 @@ server.get({ path: '/API/Card/get/:player/:hands', version: '1.0.0' }, function(
 //Redirection
 server.get({ path: '/API/Card/:player/:hands', version: '1.0.0' }, function(req, res, next) { 
 	res.send({"1":3});
-//	res.header('Location', '/API/Card/get/' + cardPlayerName + '/' + cardPlayerName);
-//	res.send();	
+	//	res.header('Location', '/API/Card/get/' + cardPlayerName + '/' + cardPlayerName);
+	//	res.send();	
 });
 
 server.get({ path: '/API/Tray/:action/:player', version: '1.0.0' }, function(req, res, next) {
