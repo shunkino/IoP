@@ -27,15 +27,14 @@ server.get('/', index);
 //routing
 //version 1.0.0
 server.get({ path: '/API/Card/get/:player/:hands', version: '1.0.0' }, function(req, res, next) {
-	//var for paramator
+	//variable for paramator
 	var cardPlayerName = req.params.player;
 	var cardPlayerHand = req.params.hands;
 	//putting and converting card information.
-	var cardObject = card.get(cardPlayerName, cardPlayerHand);
-	var cardConverted = gameUtil.cardConverter(cardObject);
+	var cardObject = card.get(cardPlayerName, cardPlayerHand, game.getCurrentPhase(), game.getWinner());
+	console.log(cardObject);
+	var cardConverted = gameUtil.cardConverter(cardObject, cardPlayerName, cardPlayerHand, game.getCurrentPhase());
 	if (cardObject != false) {
-		//stringigy demo
-		//console.log(JSON.stringify(cardConverted));	
 		console.log(cardConverted);
 		res.send(cardConverted);
 	} else {
@@ -51,16 +50,16 @@ server.get({ path: '/API/Card/:player/:hands', version: '1.0.0' }, function(req,
 });
 
 server.get({ path: '/API/Tray/:action/:player', version: '1.0.0' }, function(req, res, next) {
-	//call tray funtion and give other paramators as well.	
-	console.log(req.params.player);
+	var playerName = req.params.player;
+	tray.bet(playerName);
+	res.send("OK");
 });
 
 server.get({ path: '/API/Tray/:action', version: '1.0.0' }, function(req, res, next) {
 	//restart or other action from tray
 	var trayAction = req.params.action;
 	if (trayAction == "restart") {
-		game.initialize();
-		res.contentType = 'text/plain';
+		tray.restart();
 		res.send("restarted");	
 	}
 });

@@ -1,3 +1,4 @@
+var gameManager = require('./GameManager');
 //arrays for player cards. 
 var p1 = [];
 var p2 = [];
@@ -9,7 +10,7 @@ module.exports = {
 		p2 = [];
 		p0 = [];
 	},
-	get: function(playerName, handName) {
+	get: function(playerName, handName, phase) {
 		//response card infomation
 		if (p1.length > 0 && p2.length > 0 && p0.length > 0) {
 			//check if all card really exist.
@@ -21,6 +22,16 @@ module.exports = {
 					return p2[handName - 1];
 				break;
 				case 'P0':
+					//ここでphaseを確認してp0[handName - 1][0]に入ってるスーツを示す数字を変化させる。
+			//	if (phase == 0) {
+			//		hiddenCard = p0;
+			//		console.log(hiddenCard);
+			//		for (var i = 0, len = p0.length; i < len; i++) {
+			//			hiddenCard[handName -1][0] = 4;
+			//		}
+			//		console.log(hiddenCard);	
+			//		return hiddenCard[handName - 1]	
+			//	}	
 					return p0[handName - 1];
 				break;				
 				default:
