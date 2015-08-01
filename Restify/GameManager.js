@@ -10,6 +10,7 @@ var newCard;
 //variable to manage phase
 var currentPhase;
 var winner = 0;
+var looser = 0;
 
 var deckShuffle = function(callback) {
 	cardDeck = new nodeCard.PokerDeck();
@@ -31,6 +32,7 @@ module.exports = {
 	initialize: function() {
 		currentPhase = 0;	
 		winner = 0;
+		looser = 0;
 		card.clearAll();
 		deckShuffle(function() {
 			//draw all the cards which aprears in this round.
@@ -51,6 +53,7 @@ module.exports = {
 			poker.showDown();
 			winner = "P1";
 			looser = "P2";	
+			console.log("winner is " + winner + "looser is " + looser);
 		}
 	},
 	getCurrentPhase: function() {
@@ -58,6 +61,9 @@ module.exports = {
 	},
 	getWinner: function() {
 		return winner;
+	},
+	getLooser: function() {
+		return looser;
 	},
 	setWinner: function(player) {
 		if (player == "P1") {

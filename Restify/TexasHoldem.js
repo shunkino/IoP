@@ -33,7 +33,7 @@ server.get({ path: '/API/Card/get/:player/:hands', version: '1.0.0' }, function(
 	//putting and converting card information.
 	var cardObject = card.get(cardPlayerName, cardPlayerHand, game.getCurrentPhase(), game.getWinner());
 	console.log(cardObject);
-	var cardConverted = gameUtil.cardConverter(cardObject, cardPlayerName, cardPlayerHand, game.getCurrentPhase());
+	var cardConverted = gameUtil.cardConverter(cardObject, cardPlayerName, cardPlayerHand, game.getCurrentPhase(), game.getWinner(), game.getLooser());
 	if (cardObject != false) {
 		console.log(cardConverted);
 		res.send(cardConverted);

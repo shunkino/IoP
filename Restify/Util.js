@@ -10,7 +10,7 @@ var hash = function(key, value) {
 
 module.exports = {
 	cardConverter: function(cardObject, player, hand, phase, winner, looser) {
-		if (!winner) {
+		if (winner == 0) {
 			console.log("winner is yet set");
 		//cardObject must be key-value array.
 		//{suits: Number}
