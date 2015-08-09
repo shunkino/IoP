@@ -51,7 +51,11 @@ server.get({ path: '/API/Card/:player/:hands', version: '1.0.0' }, function(req,
 
 server.get({ path: '/API/Tray/:action/:player', version: '1.0.0' }, function(req, res, next) {
 	var playerName = req.params.player;
+	if (req.params.action == "bet") {
 	tray.bet(playerName);
+	} else {
+		game.initialize();
+	}
 	res.send("OK");
 });
 

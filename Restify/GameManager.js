@@ -12,6 +12,15 @@ var currentPhase;
 var winner = 0;
 var looser = 0;
 
+var setWinner = function(player) {
+	if (player == "P1") {
+		looser = "P2";
+	} else {
+		looser = "P1";
+	}
+	winner = player;	
+
+}
 var deckShuffle = function(callback) {
 	cardDeck = new nodeCard.PokerDeck();
 	cardDeck.shuffleAll();
@@ -44,15 +53,15 @@ module.exports = {
 		});
 	},
 	nextPhase: function(player) {
-		if ((player == "P1" && currentPhase % 2 == 0)||
-			(player == "P2" && currentPhase % 2 == 1)){
+		if ((currentPhase < 8) &&
+			((player == "P1" && currentPhase % 2 == 0)||
+			 (player == "P2" && currentPhase % 2 == 1))){
 			currentPhase++;
 		}
 		console.log("currentPhase is " + currentPhase);		
-		if(currentPhase == 6) {
-			poker.showDown();
-			winner = "P1";
-			looser = "P2";	
+		if(currentPhase == 8) {
+			winner = poker.showDown(card.getHand("P1"), card.getHand("P2"), card.getHand("P0"));
+			setWinner(winner);
 			console.log("winner is " + winner + "looser is " + looser);
 		}
 	},
@@ -65,12 +74,4 @@ module.exports = {
 	getLooser: function() {
 		return looser;
 	},
-	setWinner: function(player) {
-		if (player == "P1") {
-			looser = "P2";
-		} else {
-			looser = "P1";
-		}
-		winner = player;	
-	}	
-};
+}

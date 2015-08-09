@@ -23,15 +23,15 @@ module.exports = {
 				break;
 				case 'P0':
 					//ここでphaseを確認してp0[handName - 1][0]に入ってるスーツを示す数字を変化させる。
-			//	if (phase == 0) {
-			//		hiddenCard = p0;
-			//		console.log(hiddenCard);
-			//		for (var i = 0, len = p0.length; i < len; i++) {
-			//			hiddenCard[handName -1][0] = 4;
-			//		}
-			//		console.log(hiddenCard);	
-			//		return hiddenCard[handName - 1]	
-			//	}	
+					//	if (phase == 0) {
+					//		hiddenCard = p0;
+					//		console.log(hiddenCard);
+					//		for (var i = 0, len = p0.length; i < len; i++) {
+					//			hiddenCard[handName -1][0] = 4;
+					//		}
+					//		console.log(hiddenCard);	
+					//		return hiddenCard[handName - 1]	
+					//	}	
 					return p0[handName - 1];
 				break;				
 				default:
@@ -76,5 +76,15 @@ module.exports = {
 				return true;
 			}
 		}
-	}
+	},
+	getHand: function(player) {
+		if (player == "P1") {
+			return p1;
+		} else if (player == "P2") {
+			return p2;	
+		} else if (player == "P0") {
+			return p0;
+		}
+	},
+
 };
